@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Maplewood Family Clinic</title>
+
+    <!-- Link to our external stylesheet -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Google Fonts: Cormorant Garamond (display) + Inter (body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Inter:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <!-- =============================================
+         NAVIGATION BAR
+         Sticky top bar with the clinic name + nav links.
+    ============================================= -->
+    <header class="navbar">
+      <div class="navbar__logo">Maplewood<span>Clinic</span></div>
+      <nav>
+        <ul class="navbar__links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- =============================================
+         HERO / HOMEPAGE SECTION (#home)
+         Full-viewport welcome area with clinic tagline
+         and key details (address, phone, hours).
+    ============================================= -->
+    <section id="home" class="hero">
+      <div class="hero__content">
+        <!-- Eyebrow label — gives context before the headline -->
+        <p class="eyebrow">Family &amp; General Practice</p>
+
+        <h1 class="hero__headline">
+          Care that feels<br /><em>like home.</em>
+        </h1>
+
+        <p class="hero__subtext">
+          Maplewood Family Clinic has served our community since 1998, offering
+          compassionate, evidence-based medicine for patients of every age.
+        </p>
+
+        <!-- Quick-glance clinic details -->
+        <div class="clinic-details">
+          <div class="clinic-details__item">
+            <!-- SVG icon: location pin -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+            >
+              <path d="M21 10c0 6-9 13-9 13S3 16 3 10a9 9 0 0 1 18 0z" />
+              <circle cx="12" cy="10" r="3" />
+            </svg>
+            <span>42 Maplewood Drive, Suite 101, Portland, OR 97201</span>
+          </div>
+
+          <div class="clinic-details__item">
+            <!-- SVG icon: phone -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+            >
+              <path
+                d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7A2 2 0 0 1 22 16.9z"
+              />
+            </svg>
+            <span>(503) 555-0182</span>
+          </div>
+
+          <div class="clinic-details__item">
+            <!-- SVG icon: clock -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+            >
+              <circle cx="12" cy="12" r="10" />
+              <polyline points="12 6 12 12 16 14" />
+            </svg>
+            <span>Mon–Fri 8 am – 6 pm &nbsp;|&nbsp; Sat 9 am – 1 pm</span>
+          </div>
+        </div>
+
+        <!-- Primary call-to-action button -->
+        <a href="#contact" class="btn btn--primary">Book an appointment</a>
+      </div>
+
+      <!-- Decorative accent block — pure CSS, no image required -->
+      <div class="hero__accent" aria-hidden="true"></div>
+    </section>
+
+    <!-- =============================================
+         SERVICES SECTION (#services)
+         Cards listing each treatment / specialty offered.
+    ============================================= -->
+    <section id="services" class="services">
+      <div class="container">
+        <!-- Section header -->
+        <p class="eyebrow eyebrow--dark">What we treat</p>
+        <h2 class="section-title">Our services</h2>
+        <p class="section-subtitle">
+          From routine check-ups to chronic disease management, our team is here
+          for every stage of your health journey.
+        </p>
+
+        <!-- Service cards grid -->
+        <div class="services__grid">
+
+          <!-- Card 1 -->
+          <article class="service-card">
+            <!-- Icon container -->
+            <div class="service-card__icon" aria-hidden="true">
+              <!-- Heart pulse icon -->
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+              </svg>
+            </div>
+            <h3 class="service-card__title">General Medicine</h3>
+            <p class="service-card__desc">
+              Annual physicals, illness diagnosis, prescription management, and
+              preventive screenings tailored to your age and risk profile.
+            </p>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="service-card">
+            <div class="service-card__icon" aria-hidden="true">
+              <!-- Users / family icon -->
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+            </div>
+            <h3 class="service-card__title">Pediatric Care</h3>
+            <p class="service-card__desc">
+              Well-child visits, immunisations, developmental assessments, and
+              sick-child appointments for newborns through adolescents.
+            </p>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="service-card">
+            <div class="service-card__icon" aria-hidden="true">
+              <!-- Activity / chronic care icon -->
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+              </svg>
+            </div>
+            <h3 class="service-card__title">Chronic Disease Management</h3>
+            <p class="service-card__desc">
+              Ongoing support for diabetes, hypertension, asthma, and heart
+              disease — with care plans built around your life, not just your
+              labs.
+            </p>
+          </article>
+
+          <!-- Card 4 -->
+          <article class="service-card">
+            <div class="service-card__icon" aria-hidden="true">
+              <!-- Mind / mental health icon -->
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+                <line x1="9" y1="9" x2="9.01" y2="9"/>
+                <line x1="15" y1="9" x2="15.01" y2="9"/>
+              </svg>
+            </div>
+            <h3 class="service-card__title">Mental Health Support</h3>
+            <p class="service-card__desc">
+              Initial assessment, counselling referrals, and medication
+              management for anxiety, depression, and stress-related conditions.
+            </p>
+          </article>
+
+          <!-- Card 5 -->
+          <article class="service-card">
+            <div class="service-card__icon" aria-hidden="true">
+              <!-- Shield / immunisation icon -->
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </div>
+            <h3 class="service-card__title">Vaccinations &amp; Travel Health</h3>
+            <p class="service-card__desc">
+              Routine immunisations plus destination-specific vaccines and
+              antimalarial prescriptions for international travel.
+            </p>
+          </article>
+
+          <!-- Card 6 -->
+          <article class="service-card">
+            <div class="service-card__icon" aria-hidden="true">
+              <!-- Video / telehealth icon -->
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <polygon points="23 7 16 12 23 17 23 7"/>
+                <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+              </svg>
+            </div>
+            <h3 class="service-card__title">Telehealth Consultations</h3>
+            <p class="service-card__desc">
+              Video appointments available Monday through Saturday — same
+              quality care from wherever you are.
+            </p>
+          </article>
+
+        </div><!-- /.services__grid -->
+      </div><!-- /.container -->
+    </section>
+
+    <!-- =============================================
+         CONTACT SECTION (#contact)
+         Patient inquiry / appointment request form.
+    ============================================= -->
+    <section id="contact" class="contact">
+      <div class="container contact__inner">
+
+        <!-- Left column: context text -->
+        <div class="contact__info">
+          <p class="eyebrow">Get in touch</p>
+          <h2 class="section-title">Book or ask us anything</h2>
+          <p>
+            Fill out the form and our front-desk team will respond within one
+            business day. For urgent matters please call us directly.
+          </p>
+
+          <!-- Secondary details repeated for convenience -->
+          <ul class="contact__list">
+            <li><strong>Phone:</strong> (503) 555-0182</li>
+            <li><strong>Email:</strong> hello@maplewoodclinic.com</li>
+            <li>
+              <strong>Address:</strong> 42 Maplewood Drive, Suite 101,<br />
+              Portland, OR 97201
+            </li>
+            <li>
+              <strong>Hours:</strong> Mon–Fri 8 am – 6 pm &nbsp;|&nbsp; Sat 9
+              am – 1 pm
+            </li>
+          </ul>
+        </div>
+
+        <!-- Right column: the form itself -->
+        <div class="contact__form-wrap">
+          <!--
+            NOTE FOR LEARNERS:
+            action="" — normally points to a server-side script or service
+                         (e.g. Formspree, Netlify Forms). Left empty here.
+            method="post" — form data sent in the HTTP request body.
+            novalidate   — lets us use our own custom messages if needed.
+          -->
+          <form class="form" action="#" method="post" novalidate>
+
+            <!-- Row 1: first + last name side by side -->
+            <div class="form__row form__row--two-col">
+              <div class="form__group">
+                <!-- <label> improves accessibility — "for" must match "id" -->
+                <label for="first-name">First name <span class="required">*</span></label>
+                <input
+                  type="text"
+                  id="first-name"
+                  name="first_name"
+                  placeholder="Jane"
+                  required
+                />
+              </div>
+
+              <div class="form__group">
+                <label for="last-name">Last name <span class="required">*</span></label>
+                <input
+                  type="text"
+                  id="last-name"
+                  name="last_name"
+                  placeholder="Smith"
+                  required
+                />
+              </div>
+            </div>
+
+            <!-- Row 2: email address -->
+            <div class="form__group">
+              <label for="email">Email address <span class="required">*</span></label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="jane@example.com"
+                required
+              />
+            </div>
+
+            <!-- Row 3: phone (optional) -->
+            <div class="form__group">
+              <label for="phone">Phone number <span class="form__optional">(optional)</span></label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                placeholder="(503) 555-0000"
+              />
+            </div>
+
+            <!-- Row 4: reason for visit dropdown -->
+            <div class="form__group">
+              <label for="reason">Reason for visit <span class="required">*</span></label>
+              <select id="reason" name="reason" required>
+                <option value="" disabled selected>Select a service…</option>
+                <option value="general">General Medicine</option>
+                <option value="pediatric">Pediatric Care</option>
+                <option value="chronic">Chronic Disease Management</option>
+                <option value="mental">Mental Health Support</option>
+                <option value="vaccines">Vaccinations / Travel Health</option>
+                <option value="telehealth">Telehealth Consultation</option>
+                <option value="other">Other / Not sure yet</option>
+              </select>
+            </div>
+
+            <!-- Row 5: free-text message -->
+            <div class="form__group">
+              <label for="message">Message <span class="required">*</span></label>
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                placeholder="Briefly describe your symptoms or what you'd like to discuss…"
+                required
+              ></textarea>
+            </div>
+
+            <!-- Submit button -->
+            <button type="submit" class="btn btn--primary btn--full">
+              Send message
+            </button>
+
+          </form>
+        </div><!-- /.contact__form-wrap -->
+
+      </div><!-- /.contact__inner -->
+    </section>
+
+    <!-- =============================================
+         FOOTER
+         Simple copyright + nav repeat.
+    ============================================= -->
+    <footer class="footer">
+      <div class="container footer__inner">
+        <p class="footer__brand">Maplewood<span>Clinic</span></p>
+        <p class="footer__copy">
+          &copy; 2025 Maplewood Family Clinic. All rights reserved.
+        </p>
+        <nav>
+          <ul class="footer__links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </footer>
+
+  </body>
+</html>

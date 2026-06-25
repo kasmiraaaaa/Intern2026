@@ -1,0 +1,672 @@
+/* =============================================================================
+   STYLE.CSS — Maplewood Family Clinic
+   -----------------------------------------------------------------------------
+   Structure of this file:
+     1. CSS Custom Properties (design tokens)
+     2. Reset & Base
+     3. Reusable Utilities
+     4. Navigation Bar
+     5. Hero Section
+     6. Services Section
+     7. Contact Section
+     8. Footer
+     9. Responsive / Media Queries
+   ============================================================================= */
+
+
+/* =============================================================================
+   1. CSS CUSTOM PROPERTIES (design tokens)
+   -------------------------------------------------------------------------
+   Keeping colours, fonts, and spacing in one place means you can retheme
+   the entire site by changing values only here.
+============================================================================= */
+:root {
+  /* --- Colour palette --- */
+  --clr-forest:   #1d3a2f;   /* deep green — primary brand colour */
+  --clr-sage:     #4a7c68;   /* mid green — accents, icons */
+  --clr-mint:     #d6ece4;   /* pale mint — hero accent block, card hover */
+  --clr-cream:    #f7f4ef;   /* warm off-white — services background */
+  --clr-white:    #ffffff;
+  --clr-ink:      #1a1a1a;   /* near-black for body copy */
+  --clr-muted:    #6b7280;   /* grey for secondary text */
+  --clr-border:   #d9d9d9;   /* light grey borders */
+
+  /* --- Typography --- */
+  --font-display: 'Cormorant Garamond', Georgia, serif;   /* headlines */
+  --font-body:    'Inter', system-ui, sans-serif;          /* everything else */
+
+  /* --- Type scale --- */
+  --text-sm:   0.875rem;   /*  14 px */
+  --text-base: 1rem;       /*  16 px */
+  --text-lg:   1.125rem;   /*  18 px */
+  --text-xl:   1.25rem;    /*  20 px */
+  --text-2xl:  1.5rem;     /*  24 px */
+  --text-3xl:  2rem;       /*  32 px */
+  --text-4xl:  2.75rem;    /*  44 px */
+  --text-5xl:  3.75rem;    /*  60 px */
+
+  /* --- Spacing scale --- */
+  --space-1:  0.25rem;
+  --space-2:  0.5rem;
+  --space-3:  0.75rem;
+  --space-4:  1rem;
+  --space-6:  1.5rem;
+  --space-8:  2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+
+  /* --- Layout --- */
+  --max-width: 1160px;
+  --radius-sm: 4px;
+  --radius-md: 10px;
+  --radius-lg: 18px;
+
+  /* --- Transitions --- */
+  --ease: 0.22s ease;
+}
+
+
+/* =============================================================================
+   2. RESET & BASE STYLES
+   -------------------------------------------------------------------------
+   A lightweight reset removes browser inconsistencies.
+============================================================================= */
+
+/* Box-sizing: include padding/border in element dimensions */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Smooth scroll when navigating to anchor links */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: 1.7;
+  color: var(--clr-ink);
+  background-color: var(--clr-white);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Images never overflow their container */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Remove default list bullets — we'll style lists ourselves */
+ul {
+  list-style: none;
+}
+
+/* Make links inherit colour from their parent by default */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+
+/* =============================================================================
+   3. REUSABLE UTILITIES
+   -------------------------------------------------------------------------
+   Small classes used in multiple sections.
+============================================================================= */
+
+/* Centred max-width wrapper */
+.container {
+  width: 90%;
+  max-width: var(--max-width);
+  margin-inline: auto;   /* shorthand for margin-left + margin-right: auto */
+}
+
+/* Eyebrow label — small, spaced, coloured line above headlines */
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--clr-sage);
+  margin-bottom: var(--space-3);
+}
+
+/* Dark variant for use on light backgrounds */
+.eyebrow--dark {
+  color: var(--clr-forest);
+}
+
+/* Section headline */
+.section-title {
+  font-family: var(--font-display);
+  font-size: var(--text-4xl);
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--clr-forest);
+  margin-bottom: var(--space-4);
+}
+
+/* Section sub-headline / intro paragraph */
+.section-subtitle {
+  font-size: var(--text-lg);
+  color: var(--clr-muted);
+  max-width: 54ch;         /* ch = width of "0"; limits line length */
+  margin-bottom: var(--space-10);
+}
+
+/* =============================================================================
+   BUTTONS
+   -------------------------------------------------------------------------
+   Base .btn class + modifier --primary for the filled version.
+   --full stretches the button to full container width (used in the form).
+============================================================================= */
+.btn {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: 500;
+  padding: var(--space-3) var(--space-8);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background-color var(--ease), transform var(--ease);
+  border: none;
+}
+
+.btn--primary {
+  background-color: var(--clr-sage);
+  color: var(--clr-white);
+}
+
+/* Slight darken + lift on hover */
+.btn--primary:hover {
+  background-color: var(--clr-forest);
+  transform: translateY(-2px);
+}
+
+/* Full-width button (for the form submit) */
+.btn--full {
+  width: 100%;
+  text-align: center;
+}
+
+/* Accessibility: clear focus ring for keyboard users */
+.btn:focus-visible {
+  outline: 3px solid var(--clr-sage);
+  outline-offset: 3px;
+}
+
+
+/* =============================================================================
+   4. NAVIGATION BAR
+   -------------------------------------------------------------------------
+   Fixed to the top; transparent until content reaches it (via box-shadow).
+============================================================================= */
+.navbar {
+  position: fixed;          /* stays at top during scroll */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;             /* sits above all page content */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-4) var(--space-8);
+  background-color: var(--clr-white);
+  border-bottom: 1px solid var(--clr-border);
+}
+
+/* Clinic name in the nav */
+.navbar__logo {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 600;
+  color: var(--clr-forest);
+  letter-spacing: -0.01em;
+}
+
+/* The coloured part of the logo word */
+.navbar__logo span {
+  color: var(--clr-sage);
+}
+
+/* Horizontal list of nav links */
+.navbar__links {
+  display: flex;
+  gap: var(--space-8);
+}
+
+.navbar__links a {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--clr-muted);
+  transition: color var(--ease);
+}
+
+.navbar__links a:hover {
+  color: var(--clr-forest);
+}
+
+
+/* =============================================================================
+   5. HERO SECTION
+   -------------------------------------------------------------------------
+   Full-viewport-height section with the clinic welcome + details.
+   Uses CSS Grid to position content on the left, decorative block on the right.
+============================================================================= */
+.hero {
+  min-height: 100vh;         /* fill the whole screen on load */
+  display: grid;
+  grid-template-columns: 1fr 1fr;   /* two equal columns */
+  align-items: center;
+  padding-top: 80px;         /* offset for fixed navbar height */
+  background-color: var(--clr-white);
+  overflow: hidden;          /* clips the accent block */
+}
+
+.hero__content {
+  padding: var(--space-20) var(--space-8) var(--space-20) 10%;
+}
+
+/* Main hero headline — uses the display serif */
+.hero__headline {
+  font-family: var(--font-display);
+  font-size: var(--text-5xl);
+  font-weight: 600;
+  line-height: 1.1;
+  color: var(--clr-forest);
+  margin-bottom: var(--space-6);
+}
+
+/* The <em> makes "like home." italic — Cormorant's italic is beautiful */
+.hero__headline em {
+  font-style: italic;
+  color: var(--clr-sage);
+}
+
+.hero__subtext {
+  font-size: var(--text-lg);
+  color: var(--clr-muted);
+  max-width: 44ch;
+  margin-bottom: var(--space-8);
+}
+
+/* ---- Clinic detail items (address, phone, hours) ---- */
+.clinic-details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-bottom: var(--space-8);
+}
+
+.clinic-details__item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  font-size: var(--text-sm);
+  color: var(--clr-ink);
+}
+
+/* The SVG icon inside each detail item */
+.clinic-details__item svg {
+  flex-shrink: 0;           /* icon never squishes */
+  color: var(--clr-sage);
+  margin-top: 2px;          /* optical alignment with first text line */
+}
+
+/* ---- Decorative accent block (right half of hero) ---- */
+.hero__accent {
+  height: 100%;
+  min-height: 100vh;
+  background-color: var(--clr-mint);
+  position: relative;
+}
+
+/*
+   A subtle circular shape layered inside the accent block using
+   ::before pseudo-element — adds depth without an image.
+*/
+.hero__accent::before {
+  content: '';
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background-color: rgba(74, 124, 104, 0.12);  /* translucent sage */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+/* =============================================================================
+   6. SERVICES SECTION
+   -------------------------------------------------------------------------
+   A CSS Grid of cards on a warm cream background.
+============================================================================= */
+.services {
+  background-color: var(--clr-cream);
+  padding: var(--space-24) 0;
+}
+
+/* Three-column card grid */
+.services__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+}
+
+/* ---- Individual service card ---- */
+.service-card {
+  background-color: var(--clr-white);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8);
+  transition: box-shadow var(--ease), transform var(--ease);
+}
+
+.service-card:hover {
+  box-shadow: 0 8px 32px rgba(29, 58, 47, 0.10);
+  transform: translateY(-4px);
+}
+
+/* Icon circle */
+.service-card__icon {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--clr-mint);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-4);
+  color: var(--clr-forest);
+}
+
+.service-card__title {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 600;
+  color: var(--clr-forest);
+  margin-bottom: var(--space-2);
+}
+
+.service-card__desc {
+  font-size: var(--text-sm);
+  color: var(--clr-muted);
+  line-height: 1.65;
+}
+
+
+/* =============================================================================
+   7. CONTACT SECTION
+   -------------------------------------------------------------------------
+   Two-column layout: info text on the left, form on the right.
+============================================================================= */
+.contact {
+  background-color: var(--clr-white);
+  padding: var(--space-24) 0;
+}
+
+/* Side-by-side columns */
+.contact__inner {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;   /* form column slightly wider */
+  gap: var(--space-16);
+  align-items: start;
+}
+
+/* Left column text */
+.contact__info p {
+  font-size: var(--text-base);
+  color: var(--clr-muted);
+  margin-bottom: var(--space-6);
+  max-width: 40ch;
+}
+
+/* Contact detail list (phone, email, address, hours) */
+.contact__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  font-size: var(--text-sm);
+  color: var(--clr-ink);
+}
+
+.contact__list li strong {
+  color: var(--clr-forest);
+}
+
+/* ---- Form container card ---- */
+.contact__form-wrap {
+  background-color: var(--clr-cream);
+  border-radius: var(--radius-lg);
+  padding: var(--space-10);
+}
+
+/* ---- Form layout ---- */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+/* Two-column row (first + last name) */
+.form__row--two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+
+/* Each label + input pair */
+.form__group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.form__group label {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--clr-forest);
+}
+
+/* Required asterisk */
+.required {
+  color: #c0392b;
+  margin-left: 2px;
+}
+
+/* Optional label badge */
+.form__optional {
+  font-weight: 400;
+  color: var(--clr-muted);
+}
+
+/* Shared styles for input, select, and textarea */
+.form__group input,
+.form__group select,
+.form__group textarea {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: var(--clr-ink);
+  background-color: var(--clr-white);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-3) var(--space-4);
+  transition: border-color var(--ease), box-shadow var(--ease);
+  width: 100%;
+  appearance: none;    /* remove browser default select arrow on some browsers */
+}
+
+/* Bring browser default arrow back for select (cross-browser safe) */
+.form__group select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right var(--space-4) center;
+  padding-right: var(--space-10);
+}
+
+/* Highlight border on focus */
+.form__group input:focus,
+.form__group select:focus,
+.form__group textarea:focus {
+  outline: none;
+  border-color: var(--clr-sage);
+  box-shadow: 0 0 0 3px rgba(74, 124, 104, 0.18);
+}
+
+/* Placeholder text colour */
+.form__group input::placeholder,
+.form__group textarea::placeholder {
+  color: var(--clr-border);
+}
+
+/* Textarea: prevent horizontal resize (users can still drag vertically) */
+.form__group textarea {
+  resize: vertical;
+}
+
+
+/* =============================================================================
+   8. FOOTER
+============================================================================= */
+.footer {
+  background-color: var(--clr-forest);
+  padding: var(--space-10) 0;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.footer__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+.footer__brand {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 600;
+  color: var(--clr-white);
+}
+
+.footer__brand span {
+  color: var(--clr-mint);
+}
+
+.footer__copy {
+  font-size: var(--text-sm);
+}
+
+.footer__links {
+  display: flex;
+  gap: var(--space-6);
+}
+
+.footer__links a {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+  transition: color var(--ease);
+}
+
+.footer__links a:hover {
+  color: var(--clr-white);
+}
+
+
+/* =============================================================================
+   9. RESPONSIVE / MEDIA QUERIES
+   -------------------------------------------------------------------------
+   We use a "desktop-first" approach here:
+   the base styles are for wide screens, and we adjust for smaller screens
+   using max-width breakpoints.
+============================================================================= */
+
+/* ---- Tablet (~900 px and below) ---- */
+@media (max-width: 900px) {
+
+  /* Hero: switch to single column, hide the green accent block */
+  .hero {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    padding: var(--space-20) 0 var(--space-12);
+  }
+
+  .hero__content {
+    padding: var(--space-12) var(--space-6);
+  }
+
+  .hero__headline {
+    font-size: var(--text-4xl);
+  }
+
+  .hero__accent {
+    display: none;  /* accent block removed on small screens */
+  }
+
+  /* Services: two columns */
+  .services__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Contact: single column */
+  .contact__inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-10);
+  }
+
+  /* Section headlines */
+  .section-title {
+    font-size: var(--text-3xl);
+  }
+}
+
+/* ---- Mobile (~600 px and below) ---- */
+@media (max-width: 600px) {
+
+  /* Navbar: smaller padding, hide nav links (in a real project you'd add
+     a hamburger menu here — this is a great next step for learning!) */
+  .navbar {
+    padding: var(--space-3) var(--space-4);
+  }
+
+  .navbar__links {
+    display: none;
+  }
+
+  /* Hero headline: smaller on mobile */
+  .hero__headline {
+    font-size: var(--text-3xl);
+  }
+
+  /* Services: single column */
+  .services__grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Name row: also single column */
+  .form__row--two-col {
+    grid-template-columns: 1fr;
+  }
+
+  /* Footer: stack vertically */
+  .footer__inner {
+    flex-direction: column;
+    text-align: center;
+  }
+}
