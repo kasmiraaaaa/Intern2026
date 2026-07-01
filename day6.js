@@ -1,7 +1,7 @@
 // Create an employee object
 let employee = {
     id: "007",
-    name: "Ashwin",
+    name: "Kasu",
     department: "IT",
     salary: 50000
 };
